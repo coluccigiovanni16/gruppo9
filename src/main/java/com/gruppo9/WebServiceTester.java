@@ -53,7 +53,7 @@ public class WebServiceTester  {
     //Test: Get User of id 1
     //Test: Check if user is same as sample user
     private void testGetUser(){
-        Student sampleUser = new Student( "nom","prenom", 2,0,0 );
+        Student sampleUser = new Student( "nom","prenom", 2 );
         sampleUser.setId(1);
 
         Student user = client

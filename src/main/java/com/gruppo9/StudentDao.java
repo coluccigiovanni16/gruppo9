@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDao {
-    String path = "C:\\Users\\jiovy\\Desktop\\gg\\studenti.txt";
+    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\studenti.txt";
 
     public List<Student> getAllStudenti() {
         List<Student> studentiList = null;
@@ -13,8 +13,6 @@ public class StudentDao {
             File file = new File( path );
             if (!file.exists()) {
                 studentiList = new ArrayList<Student>();
-                Student s1 = new Student( "name", "prename", 1, 0, 0 );
-                studentiList.add( s1 );
                 saveStudentList( studentiList );
             } else {
                 FileInputStream fis = new FileInputStream( file );
@@ -45,7 +43,7 @@ public class StudentDao {
         List<Student> students = getAllStudenti();
         boolean studentExists = false;
         for (Student student : students) {
-            if (student.getId() == (pStudent.getId())) {
+            if (student.equals(  pStudent)) {
                 studentExists = true;
                 break;
             }

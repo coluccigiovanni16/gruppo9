@@ -1,30 +1,24 @@
 package com.gruppo9;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
-public class EventDAO {
-    String path = "C:\\Users\\jiovy\\Desktop\\gg\\events.txt";
+public class EventDao {
+    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\events.txt";
 
-    public List<Event> getAllEvents() {
-        List<Event> eventList = null;
+    public LinkedList<Event> getAllEvents() {
+        LinkedList<Event> eventList = null;
         try {
             File file = new File( path );
             if (!file.exists()) {
-//                LinkedList<Participant> participants =null;
-//                participants.add( new Participant( "gggi" ));
-//                participants.add(   new Participant( "fdfi" ));
-                Event event = new Event( 1, "tech1", "good1", "gg1", null );
-                Event event1 = new Event( 2, "tech2", "good2", "gg2", null );
-                eventList = new ArrayList<Event>();
-                eventList.add( event );
-                eventList.add( event1 );
+                eventList = new LinkedList<Event>();
                 saveEventList( eventList );
             } else {
                 FileInputStream fis = new FileInputStream( file );
                 ObjectInputStream ois = new ObjectInputStream( fis );
-                eventList = (List<Event>) ois.readObject();
+                eventList = (LinkedList<Event>) ois.readObject();
                 ois.close();
             }
         } catch (IOException e) {
@@ -45,11 +39,22 @@ public class EventDAO {
         return null;
     }
 
+    public LinkedList<Event> getEventsByTeacher(int id) {
+        List<Event> events = getAllEvents();
+        LinkedList<Event> result = new LinkedList<Event>();
+        for (Event event : events) {
+            if (event.getTeacher() == id) {
+                result.add( event );
+            }
+        }
+        return result;
+    }
+
     public int addEvent(Event pEvent) {
-        List<Event> eventList = getAllEvents();
+        LinkedList<Event> eventList = getAllEvents();
         boolean userExists = false;
         for (Event event : eventList) {
-            if (event.getType().equalsIgnoreCase( pEvent.getType() )) {
+            if (event.equals( pEvent )) {
                 userExists = true;
                 break;
             }
@@ -76,11 +81,11 @@ public class EventDAO {
         return 0;
     }
 
-    public int deleteEvent(String type) {
+    public int deleteEvent(String idE, int idT) {
         List<Event> eventList = getAllEvents();
 
         for (Event event : eventList) {
-            if (event.getType().equalsIgnoreCase( type )) {
+            if (event.getType().equalsIgnoreCase( idE ) && event.getTeacher() == idT) {
                 int index = eventList.indexOf( event );
                 eventList.remove( index );
                 saveEventList( eventList );
@@ -102,6 +107,41 @@ public class EventDAO {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public int updateEventPart(Student student, String nameEvent, int idT, boolean request) {
+        LinkedList<Event> eventList = getAllEvents();
+        for (Event event : eventList) {
+            if (event.getNome().equals( nameEvent ) && event.getTeacher() == idT) {
+                if (!event.getParticipants().containsKey( student ) && request) {
+                    event.getParticipants().put( student, false );
+                } else if (event.getParticipants().containsKey( student ) && !request) {
+                    event.getParticipants().remove( student );
+                }
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public Map<Student, Boolean> getPartecipants(String idE, int idT) {
+        LinkedList<Event> eventList = getAllEvents();
+        for (Event event : eventList) {
+            if (event.getNome().equals( idE ) && event.getTeacher() == idT) {
+                return event.getParticipants();
+            }
+            return null;
+        }
+        return null;
+    }
+
+    public void setPatecipants(String idE, int idT, Map<Student, Boolean> partecipants) {
+        LinkedList<Event> eventList = getAllEvents();
+        for (Event event : eventList) {
+            if (event.getNome().equals( idE ) && event.getTeacher() == idT) {
+                event.setParticipants( partecipants );
+            }
         }
     }
 }

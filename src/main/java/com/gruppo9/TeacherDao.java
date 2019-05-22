@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TeacherDao {
 
-    String path = "C:\\Users\\jiovy\\Desktop\\gg\\docenti.txt";
+    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\docenti.txt";
 
     public List<Teacher> getAllDocenti() {
         List<Teacher> teachersList = null;
@@ -43,7 +43,7 @@ public class TeacherDao {
         List<Teacher> teachers = getAllDocenti();
         boolean teacherExists = false;
         for (Teacher teacher : teachers) {
-            if (pTeacher.getId() == (pTeacher.getId())) {
+            if (teacher.equals( pTeacher )) {
                 teacherExists = true;
                 break;
             }

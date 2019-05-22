@@ -3,27 +3,30 @@ package com.gruppo9;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @XmlRootElement(name = "event")
 public class Event implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private String nome;
     private int date;
     private String type;
     private String description;
-    private String teacher;
-    private List<Student> participants;
+    private int teacher;
+    private Map<Student, Boolean> participants;
 
     public Event() {
     }
 
-    public Event(int date, String type, String description, String teacher, List<Student> participants) {
+    public Event(String nome, int date, String type, String description, int teacher) {
+        this.nome = nome;
         this.date = date;
         this.type = type;
         this.description = description;
         this.teacher = teacher;
-        this.participants = participants;
+        this.participants = new HashMap<Student, Boolean>(  );
     }
 
     public static long getSerialVersionUID() {
@@ -57,22 +60,31 @@ public class Event implements Serializable {
         this.description = description;
     }
 
-    public String getTeacher() {
+    public int getTeacher() {
         return teacher;
     }
 
     @XmlElement
-    public void setTeacher(String teacher) {
+    public void setTeacher(int teacher) {
         this.teacher = teacher;
     }
 
-    public List<Student> getParticipants() {
+    public Map<Student, Boolean> getParticipants() {
         return participants;
     }
 
     @XmlElement
-    public void setParticipants(List<Student> participants) {
+    public void setParticipants(Map<Student, Boolean> participants) {
         this.participants = participants;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    @XmlElement
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
@@ -86,7 +98,9 @@ public class Event implements Serializable {
             if (date == event.getDate()
                     && type.equals( event.getType() )
                     && description.equals( event.getDescription() )
-                    && teacher.equals( event.getTeacher() )
+                    && teacher==( event.getTeacher() )
+                    && participants == event.getParticipants()
+                    && nome.equals( event.getNome() )
             ) {
                 return true;
             }
@@ -97,7 +111,8 @@ public class Event implements Serializable {
     @Override
     public String toString() {
         return "Event{" +
-                "date=" + date +
+                "nome='" + nome + '\'' +
+                ", date=" + date +
                 ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
                 ", teacher='" + teacher + '\'' +

@@ -11,18 +11,14 @@ public class Student implements Serializable {
     private String nome;
     private String cognome;
     private int id;
-    private int conferma;
-    private int richiesta;
 
     public Student() {
     }
 
-    public Student(String nome, String cognome, int id, int conferma, int richiesta) {
+    public Student(String nome, String cognome, int id) {
         this.nome = nome;
         this.cognome = cognome;
         this.id = id;
-        this.conferma = conferma;
-        this.richiesta = richiesta;
     }
 
 
@@ -53,26 +49,6 @@ public class Student implements Serializable {
         this.id = id;
     }
 
-    public int getConferma() {
-        return conferma;
-    }
-
-    public int getRichiesta() {
-        return richiesta;
-    }
-
-    @XmlElement
-    public void setConferma(int conferma) {
-        this.conferma = conferma;
-    }
-
-
-    @XmlElement
-    public void setRichiesta(int richiesta) {
-        this.richiesta = richiesta;
-    }
-
-
     @Override
     public boolean equals(Object object) {
         if (object == null) {
@@ -83,10 +59,7 @@ public class Student implements Serializable {
             Student student = (Student) object;
             if (id == student.getId()
                     && nome.equals( student.getNome() )
-                    && cognome.equals( student.getCognome() )
-                    && richiesta == (student.getRichiesta())
-                    && conferma == (student.getConferma())
-            ) {
+                    && cognome.equals( student.getCognome() )) {
                 return true;
             }
         }
@@ -99,8 +72,6 @@ public class Student implements Serializable {
                 "nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
                 ", id='" + id + '\'' +
-                ", conferma=" + conferma +
-                ", richiesta=" + richiesta +
                 '}';
     }
 }
