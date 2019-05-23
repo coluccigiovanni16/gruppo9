@@ -11,7 +11,7 @@ public class TeacherService {
 
     EventDao eventDao = new EventDao();
     private static final String SUCCESS_RESULT = "<result>success</result>";
-    private static final String FAILURE_RESULT  = "<result>failure</result>";
+    private static final String FAILURE_RESULT = "<result>failure</result>";
 
 
     //ADD AN EVENT
@@ -51,7 +51,7 @@ public class TeacherService {
     @Produces(MediaType.APPLICATION_XML)
     public Set<Student> getPartecipants(@PathParam("idE") String idE) {
         int idT = 100;
-        return eventDao.getPartecipants( idE, idT ).keySet();
+        return eventDao.getEvent( idE ).getParticipants().keySet();
     }
 
     //    SHOW ALL PARTECIPANTS OF AN EVENT(ONLY IF IS OF THE SPECIFIC TEACHER)

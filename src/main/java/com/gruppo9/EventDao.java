@@ -130,7 +130,6 @@ public class EventDao {
             if (event.getType().equals( idE ) && event.getTeacher() == idT) {
                 return event.getParticipants();
             }
-            return null;
         }
         return null;
     }
