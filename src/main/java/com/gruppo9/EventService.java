@@ -20,10 +20,10 @@ public class EventService {
     }
 
     @GET
-    @Path("/events/{type}")
+    @Path("/events/{name}")
     @Produces(MediaType.APPLICATION_XML)
-    public Event getEvent(@PathParam("type") String type) {
-        return eventDao.getEvent( type );
+    public Event getEvent(@PathParam("name") String name) {
+        return eventDao.getEvent( name );
     }
 
     @POST
@@ -31,12 +31,6 @@ public class EventService {
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public String createEvent()
-//            (
-//            @FormParam("id") int id,
-//            @FormParam("name") String name,
-//            @FormParam("profession") String profession,
-//            @Context HttpServletResponse servletResponse)
-//            throws IOException
     {
         Event event = new Event( "AI",1, "tech", "good event", 100 );
         Event event1 = new Event( "AI1",12, "tech1", "good event", 101 );
@@ -49,14 +43,10 @@ public class EventService {
     }
 
     @PUT
-    @Path("/events")
+    @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String updateEvent()
-//            (@FormParam("id") int id,
-//             @FormParam("name") String name,
-//             @FormParam("profession") String profession,
-//             @Context HttpServletResponse servletResponse) throws IOException
+    public String updateEvent(@PathParam("idE") String name)
     {
         Event event = new Event("AI", 1, "tech", "good event", 100 );
         int result = eventDao.updateEvent( event );
@@ -67,10 +57,10 @@ public class EventService {
     }
 
     @DELETE
-    @Path("/events/{type}")
+    @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public String deleteEvent(@PathParam("type") String type) {
-        int result = eventDao.deleteEvent( type,1 );
+    public String deleteEvent(@PathParam("idE") String name) {
+        int result = eventDao.deleteEvent( name,1 );
         if (result == 1) {
             return SUCCESS_RESULT;
         }
@@ -84,3 +74,4 @@ public class EventService {
         return "<operations>GET, PUT, POST, DELETE</operations>";
     }
 }
+

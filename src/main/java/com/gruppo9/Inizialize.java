@@ -19,10 +19,6 @@ public class Inizialize {
     @Path("/create")
     @Produces(MediaType.APPLICATION_XML)
     public String createAll() {
-        Event event = new Event( "maker", 1, "tech1", "good1", 100 );
-        Event event1 = new Event( "bigdata", 2, "tech2", "good2", 101 );
-        eventDao.addEvent( event );
-        eventDao.addEvent( event1 );
         Student s = new Student( "name", "prename", 1 );
         Student s1 = new Student( "name1", "prename1", 2 );
         studentDao.addStudente( s );
@@ -30,8 +26,10 @@ public class Inizialize {
         Map<Student, Boolean> p = new HashMap<Student, Boolean>();
         p.put( s, true );
         p.put( s1, true );
-        eventDao.setPatecipants( "tech1",100,p );
-        eventDao.setPatecipants( "tech2",101,p );
+        Event event = new Event( "maker", 1, "tech1", "good1", 100,p );
+        Event event1 = new Event( "bigdata", 2, "tech2", "good2", 101,p );
+        eventDao.addEvent( event );
+        eventDao.addEvent( event1 );
         Teacher t = new Teacher( "nom", "cogn", 100 );
         Teacher t1 = new Teacher( "nom1", "cogn1", 101 );
         teacherDao.addDocente( t );

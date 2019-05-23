@@ -29,10 +29,10 @@ public class EventDao {
         return eventList;
     }
 
-    public Event getEvent(String type) {
+    public Event getEvent(String name) {
         List<Event> events = getAllEvents();
         for (Event event : events) {
-            if (event.getType().equalsIgnoreCase( type )) {
+            if (event.getNome().equalsIgnoreCase( name )) {
                 return event;
             }
         }
@@ -69,9 +69,8 @@ public class EventDao {
 
     public int updateEvent(Event pEvent) {
         List<Event> eventList = getAllEvents();
-
         for (Event event : eventList) {
-            if (event.getType().equalsIgnoreCase( pEvent.getType() )) {
+            if (event.getNome().equalsIgnoreCase( pEvent.getNome() )) {
                 int index = eventList.indexOf( event );
                 eventList.set( index, pEvent );
                 saveEventList( eventList );
@@ -128,7 +127,7 @@ public class EventDao {
     public Map<Student, Boolean> getPartecipants(String idE, int idT) {
         LinkedList<Event> eventList = getAllEvents();
         for (Event event : eventList) {
-            if (event.getNome().equals( idE ) && event.getTeacher() == idT) {
+            if (event.getType().equals( idE ) && event.getTeacher() == idT) {
                 return event.getParticipants();
             }
             return null;
@@ -143,5 +142,6 @@ public class EventDao {
                 event.setParticipants( partecipants );
             }
         }
+        saveEventList( eventList );
     }
 }

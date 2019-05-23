@@ -29,6 +29,15 @@ public class Event implements Serializable {
         this.participants = new HashMap<Student, Boolean>(  );
     }
 
+    public Event(String nome, int date, String type, String description, int teacher, Map<Student, Boolean> participants) {
+        this.nome = nome;
+        this.date = date;
+        this.type = type;
+        this.description = description;
+        this.teacher = teacher;
+        this.participants = participants;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
