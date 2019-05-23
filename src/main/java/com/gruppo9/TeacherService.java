@@ -21,7 +21,7 @@ public class TeacherService {
     public String addEvent() {
 //        to do : FORM
         Event event = new Event( "maker", 1, "tech1", "good1", 102 );
-        int result = eventDao.addEvent( event );
+        eventDao.addEvent( event );
         if (result == 1) {
             return SUCCESS_RESULT;
         }

@@ -47,7 +47,7 @@ public class Main {
             pstmt.execute();
 
             pstmt = conn.prepareStatement( "INSERT INTO event " +
-                    "(name,teacherid,data,type,description) values (?,?,?,?,?)" );
+                    "(name,teacherid,"date",type,description) values (?,?,?,?,?)" );
             pstmt.setString( 1, "MOBILE" );
             pstmt.setInt( 2, 100 );
             pstmt.setString( 5, "PROG" );

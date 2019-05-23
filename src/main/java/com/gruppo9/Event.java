@@ -3,6 +3,7 @@ package com.gruppo9;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ public class Event implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String nome;
-    private int date;
+    private Date date;
     private String type;
     private String description;
     private int teacher;
@@ -20,7 +21,7 @@ public class Event implements Serializable {
     public Event() {
     }
 
-    public Event(String nome, int date, String type, String description, int teacher) {
+    public Event(String nome, Date date, String type, String description, int teacher) {
         this.nome = nome;
         this.date = date;
         this.type = type;
@@ -29,7 +30,7 @@ public class Event implements Serializable {
         this.participants = new HashMap<Student, Boolean>(  );
     }
 
-    public Event(String nome, int date, String type, String description, int teacher, Map<Student, Boolean> participants) {
+    public Event(String nome, Date date, String type, String description, int teacher, Map<Student, Boolean> participants) {
         this.nome = nome;
         this.date = date;
         this.type = type;
@@ -42,12 +43,12 @@ public class Event implements Serializable {
         return serialVersionUID;
     }
 
-    public int getDate() {
+    public Date getDate() {
         return date;
     }
 
     @XmlElement
-    public void setDate(int date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
