@@ -11,7 +11,7 @@ public class TeacherService {
 
     EventDao eventDao = new EventDao();
     private static final String SUCCESS_RESULT = "<result>success</result>";
-    private static final String FAILURE_RESULT = "<result>failure</result>";
+    private static final String FAILURE_RESULT  = "<result>failure</result>";
 
 
     //ADD AN EVENT
