@@ -6,7 +6,9 @@ import java.util.List;
 
 public class TeacherDao {
 
-    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\docenti.txt";
+    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\teachers.txt";
+    //    String path = "C:\\Users\\valer\\Documents\\GitHub\\gruppo9\\teachers.txt";
+
 
     public List<Teacher> getAllDocenti() {
         List<Teacher> teachersList = null;

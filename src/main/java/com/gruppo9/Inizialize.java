@@ -24,8 +24,8 @@ public class Inizialize {
         studentDao.addStudente( s );
         studentDao.addStudente( s1 );
         Map<Student, Boolean> p = new HashMap<Student, Boolean>();
-        p.put( s, true );
-        p.put( s1, true );
+        p.put( s, false );
+        p.put( s1, false );
         Event event = new Event( "maker", 1, "tech1", "good1", 100,p );
         Event event1 = new Event( "bigdata", 2, "tech2", "good2", 101,p );
         eventDao.addEvent( event );

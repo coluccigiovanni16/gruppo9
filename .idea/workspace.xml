@@ -2,13 +2,27 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="test-jersey-rest-maven-tomcat:war exploded" />
+      <artifact name="gruppo9:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f36f578e-9489-4e43-b211-830875e3c531" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docenti.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/events.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/gruppo9/EventDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gruppo9/EventDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gruppo9/Inizialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gruppo9/Inizialize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gruppo9/StudentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gruppo9/StudentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studenti.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gruppo9/EventDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gruppo9/EventDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gruppo9/StudentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gruppo9/StudentDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gruppo9/TeacherDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gruppo9/TeacherDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-jersey-rest-maven-tomcat/WEB-INF/classes/com/gruppo9/EventDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-jersey-rest-maven-tomcat/WEB-INF/classes/com/gruppo9/EventDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-jersey-rest-maven-tomcat/WEB-INF/classes/com/gruppo9/StudentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-jersey-rest-maven-tomcat/WEB-INF/classes/com/gruppo9/StudentDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-jersey-rest-maven-tomcat/WEB-INF/classes/com/gruppo9/TeacherDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-jersey-rest-maven-tomcat/WEB-INF/classes/com/gruppo9/TeacherDao.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,12 +82,16 @@
     </expand>
     <select />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/EventService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
+            <state relative-caret-position="255">
               <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -86,11 +104,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/EventDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="126" column="36" lean-forward="true" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+            <state relative-caret-position="102">
+              <caret line="9" column="77" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1324#1331#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-end-line="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/StudentDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="69" selection-start-line="8" selection-end-line="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,14 +144,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="765">
               <caret line="53" column="66" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#908#909#0" expanded="true" />
-                <element signature="e#954#955#0" expanded="true" />
-                <element signature="e#1062#1063#0" expanded="true" />
-                <element signature="e#1108#1109#0" expanded="true" />
+                <element signature="e#4786#4787#0" expanded="true" />
                 <element signature="e#4858#4859#0" expanded="true" />
               </folding>
             </state>
@@ -130,8 +170,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/Inizialize.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+            <state relative-caret-position="459">
+              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,18 +184,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1173">
               <caret line="99" column="19" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/StudentDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -226,13 +254,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/EventDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/WebServiceTester.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/StudentService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/Event.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/EventService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/Inizialize.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/StudentDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/Event.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/Inizialize.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/EventService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/EventDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherService.java" />
       </list>
     </option>
   </component>
@@ -254,9 +282,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="951" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -277,6 +305,27 @@
               <item name="gruppo9" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="gruppo9" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gruppo9" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gruppo9" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gruppo9" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gruppo9" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gruppo9" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gruppo9" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -286,9 +335,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558602584778" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558620354565" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -360,7 +410,7 @@
       <option name="OPEN_IN_BROWSER" value="false" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="test-jersey-rest-maven-tomcat:war exploded">
+        <artifact name="gruppo9:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="" />
           </settings>
@@ -368,7 +418,6 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_gg" />
-        <option name="HTTP_PORT" value="8081" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -426,7 +475,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="test-jersey-rest-maven-tomcat:war exploded" />
+          <artifact name="gruppo9:war exploded" />
         </option>
       </method>
     </configuration>
@@ -467,7 +516,8 @@
       <workItem from="1558556063055" duration="4357000" />
       <workItem from="1558561708339" duration="1416000" />
       <workItem from="1558597624164" duration="4543000" />
-      <workItem from="1558608054609" duration="3190000" />
+      <workItem from="1558608054609" duration="4733000" />
+      <workItem from="1558620503777" duration="1416000" />
     </task>
     <task id="LOCAL-00001" summary="gg">
       <created>1558561769206</created>
@@ -494,12 +544,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75274000" />
+    <option name="totallyTimeSpent" value="78233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20604026" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20872483" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -509,7 +559,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32719547" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36819485" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5609065" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -519,7 +569,7 @@
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3295129" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.49008498" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" visible="true" weight="0.3243626" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.3243626" />
       <window_info anchor="bottom" id="Database Changes" order="13" weight="0.3286119" />
       <window_info anchor="bottom" id="Version Control" order="14" weight="0.3286119" />
       <window_info anchor="bottom" id="REST Client" order="15" weight="0.4036827" />
@@ -697,16 +747,6 @@
     <entry file="file://$PROJECT_DIR$/studenti.txt" />
     <entry file="file://$PROJECT_DIR$/events.txt" />
     <entry file="file://$PROJECT_DIR$/docenti.txt" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/Student.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -732,29 +772,35 @@
     <entry file="das://e0e315cd-da29-4329-9974-04cf097b8608/schema/main/table/student">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
-          <filtering enabled="true" />
+          <filtering />
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e0e315cd-da29-4329-9974-04cf097b8608/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/StudentService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/EventService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="255">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#690#691#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/Inizialize.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        <state relative-caret-position="765">
+          <caret line="53" column="66" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4786#4787#0" expanded="true" />
+            <element signature="e#4858#4859#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -769,10 +815,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/Inizialize.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/StudentService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/StudentDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+        <state relative-caret-position="136">
+          <caret line="8" column="69" selection-start-line="8" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="62" lean-forward="true" selection-start-line="9" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -781,39 +857,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/EventDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="126" column="36" lean-forward="true" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+        <state relative-caret-position="102">
+          <caret line="9" column="77" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/TeacherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="53" column="66" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#908#909#0" expanded="true" />
-            <element signature="e#954#955#0" expanded="true" />
-            <element signature="e#1062#1063#0" expanded="true" />
-            <element signature="e#1108#1109#0" expanded="true" />
-            <element signature="e#4858#4859#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gruppo9/EventService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
-            <element signature="e#690#691#0" expanded="true" />
+            <element signature="e#1324#1331#0" expanded="true" />
           </folding>
         </state>
       </provider>

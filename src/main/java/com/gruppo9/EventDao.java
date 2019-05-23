@@ -7,6 +7,9 @@ import java.util.Map;
 
 public class EventDao {
     String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\events.txt";
+    //    String path = "C:\\Users\\valer\\Documents\\GitHub\\gruppo9\\events.txt";
+
+
 
     public LinkedList<Event> getAllEvents() {
         LinkedList<Event> eventList = null;

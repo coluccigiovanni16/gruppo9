@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDao {
-    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\studenti.txt";
+    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\students.txt";
+//    String path = "C:\\Users\\valer\\Documents\\GitHub\\gruppo9\\students.txt";
+
+
 
     public List<Student> getAllStudenti() {
         List<Student> studentiList = null;
