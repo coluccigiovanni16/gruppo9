@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             Class.forName( "org.sqlite.JDBC" );
-            Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+            Connection conn = DriverManager.getConnection( "jdbc:sqlite:C:\\Users\\jiovy\\Desktop\\gruppo9\\SQLlite\\gruppo9.db" );
             Statement stmt;
             PreparedStatement pstmt;
             ResultSet rs;
@@ -47,7 +47,7 @@ public class Main {
             pstmt.execute();
 
             pstmt = conn.prepareStatement( "INSERT INTO event " +
-                    "(name,teacherid,"date",type,description) values (?,?,?,?,?)" );
+                    "(name,teacherid,date,type,description) values (?,?,?,?,?)" );
             pstmt.setString( 1, "MOBILE" );
             pstmt.setInt( 2, 100 );
             pstmt.setString( 5, "PROG" );

@@ -2,6 +2,7 @@ package com.gruppo9;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,28 +18,26 @@ public class StudentService {
     @GET
     @Path("/teachers")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Teacher> getTeachers() {
+    public List<Teacher> getTeachers() throws SQLException, ClassNotFoundException {
         return teacherDao.getAllDocenti();
     }
 
     @GET
     @Path("/teachers/{idT}/events")
     @Produces(MediaType.APPLICATION_XML)
-    public LinkedList<Event> getEventsByTeacher(@PathParam("idT") int id) {
+    public LinkedList<Event> getEventsByTeacher(@PathParam("idT") int id) throws SQLException, ClassNotFoundException {
         return eventDao.getEventsByTeacher( id );
     }
 
     @PUT
     @Path("/teachers/{idT}/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public String updateStudentPartecipation(@PathParam("idE") String name,@PathParam("idT") int idT)
-    {
-        Student s1= new Student( "nome","cognome",1 );
-        int result = eventDao.updateEventPart(s1,name,idT,true);
-        if (result == 1) {
-            return SUCCESS_RESULT;
-        }
-        return FAILURE_RESULT;
+    public String updateStudentPartecipation(@PathParam("idE") String name, @PathParam("idT") int idT) throws SQLException, ClassNotFoundException {
+        Student s1 = new Student( "nome", "cognome", 1 );
+//        definire nel form un booleano prenota/cancella prenotazione
+        eventDao.updateEventPart( s1, name, idT, true );
+        return SUCCESS_RESULT;
+
     }
 
 

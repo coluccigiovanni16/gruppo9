@@ -1,7 +1,7 @@
 package com.gruppo9;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TeacherDao {
@@ -10,94 +10,81 @@ public class TeacherDao {
     //    String path = "C:\\Users\\valer\\Documents\\GitHub\\gruppo9\\teachers.txt";
 
 
-    public List<Teacher> getAllDocenti() {
-        List<Teacher> teachersList = null;
-        try {
-            File file = new File( path );
-            if (!file.exists()) {
-                teachersList = new ArrayList<Teacher>();
-                saveDocentiList( teachersList );
-            } else {
-                FileInputStream fis = new FileInputStream( file );
-                ObjectInputStream ois = new ObjectInputStream( fis );
-                teachersList = (List<Teacher>) ois.readObject();
-                ois.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+    public List<Teacher> getAllDocenti() throws ClassNotFoundException, SQLException {
+        LinkedList<Teacher> teachersList = null;
+        Class.forName( "org.sqlite.JDBC" );
+        Connection conn = DriverManager.getConnection( "jdbc:sqlite:C:\\Users\\jiovy\\Desktop\\gruppo9\\SQLlite\\gruppo9.db" );
+        Statement stmt;
+        ResultSet rs;
+        stmt = conn.createStatement();
+        rs = stmt.executeQuery( "SELECT * from teacher" );
+        while (rs.next()) {
+            teachersList.add( new Teacher( rs.getString( "name" ),
+                    rs.getString( "lastname" ),
+                    rs.getInt( "id" ) ) );
         }
+        stmt.close(); // rilascio le risorse
+        conn.close(); // termino la connessione
         return teachersList;
     }
 
-    public Teacher getDocente(int id) {
-        List<Teacher> teachers = getAllDocenti();
-        for (Teacher teacher : teachers) {
-            if (teacher.getId() == id) {
-                return teacher;
-            }
+
+    public Teacher getDocente(int teacherid) throws ClassNotFoundException, SQLException {
+        Teacher teacher = null;
+        Class.forName( "org.sqlite.JDBC" );
+        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        PreparedStatement pstmt;
+        ResultSet rs;
+        pstmt = conn.prepareStatement( "SELECT * from Teacher where id=?" );
+        pstmt.setInt( 1, teacherid );
+        rs = pstmt.executeQuery();
+        while (rs.next()) {
+            teacher = new Teacher( rs.getString( "name" ),
+                    rs.getString( "lastname" ),
+                    rs.getInt( "id" ) );
         }
-        return null;
+        pstmt.close(); // rilascio le risorse
+        conn.close(); // termino la connessione
+        return teacher;
     }
 
-    public int addDocente(Teacher pTeacher) {
-        List<Teacher> teachers = getAllDocenti();
-        boolean teacherExists = false;
-        for (Teacher teacher : teachers) {
-            if (teacher.equals( pTeacher )) {
-                teacherExists = true;
-                break;
-            }
-        }
-        if (!teacherExists) {
-            teachers.add( pTeacher );
-            saveDocentiList( teachers );
-            return 1;
-        }
-        return 0;
+    public void addDocente(Teacher pTeacher) throws SQLException, ClassNotFoundException {
+        Class.forName( "org.sqlite.JDBC" );
+        Connection conn = DriverManager.getConnection( "jdbc:sqlite:C:\\Users\\jiovy\\Desktop\\gruppo9\\SQLlite\\gruppo9.db" );
+        PreparedStatement pstmt;
+        pstmt = conn.prepareStatement( "insert  into teacher (name, lastname, id) values (?,?,?)" );
+        pstmt.setString( 1, pTeacher.getNome() );
+        pstmt.setString( 2, pTeacher.getCognome() );
+        pstmt.setInt( 3, pTeacher.getId() );
+        pstmt.execute();
+        pstmt.close(); // rilascio le risorse
+        conn.close(); // termino la connessione
     }
 
-    public int updateDocente(Teacher pTeacher) {
-        List<Teacher> teachers = getAllDocenti();
-        for (Teacher teacher : teachers) {
-            if (teacher.getId() == pTeacher.getId()) {
-                int index = teachers.indexOf( teacher );
-                teachers.set( index, pTeacher );
-                saveDocentiList( teachers );
-                return 1;
-            }
-        }
-        return 0;
+    public void updateDocente(Teacher pTeacher) throws ClassNotFoundException, SQLException {
+        Class.forName( "org.sqlite.JDBC" );
+        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        PreparedStatement pstmt;
+        pstmt = conn.prepareStatement( "update teacher SET (name =?,lastname=?) where (id=?)" );
+        pstmt.setString( 1, pTeacher.getNome() );
+        pstmt.setString( 2, pTeacher.getCognome() );
+        pstmt.setInt( 3, pTeacher.getId() );
+        pstmt.execute();
+        pstmt.close(); // rilascio le risorse
+        conn.close(); // termino la connessione
     }
 
-    public int deleteDocente(int id) {
-        List<Teacher> teachers = getAllDocenti();
-        for (Teacher teacher : teachers) {
-            if (teacher.getId() == id) {
-                int index = teachers.indexOf( teacher );
-                teachers.remove( index );
-                saveDocentiList( teachers );
-                return 1;
-            }
-        }
-        return 0;
-    }
-
-
-    private void saveDocentiList(List<Teacher> teacherList) {
-        try {
-            File file = new File( path );
-            FileOutputStream fos;
-            fos = new FileOutputStream( file );
-            ObjectOutputStream oos = new ObjectOutputStream( fos );
-            oos.writeObject( teacherList );
-            oos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void deleteDocente(int teacherid) throws ClassNotFoundException, SQLException {
+        Class.forName( "org.sqlite.JDBC" );
+        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        PreparedStatement pstmt;
+        pstmt = conn.prepareStatement( "delete from teacher where (id=?)" );
+        pstmt.setInt( 1, teacherid );
+        pstmt.execute();
+        pstmt.close(); // rilascio le risorse
+        conn.close(); // termino la connessione
     }
 
 }
+
+
