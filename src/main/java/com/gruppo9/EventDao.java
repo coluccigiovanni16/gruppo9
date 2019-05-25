@@ -1,6 +1,7 @@
 package com.gruppo9;
 
 import java.sql.*;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -8,9 +9,8 @@ public class EventDao {
 
 
     public LinkedList<Event> getAllEvents() throws SQLException, ClassNotFoundException {
-        LinkedList<Event> eventList = null;
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:C:\\Users\\jiovy\\Desktop\\gruppo9\\SQLlite\\gruppo9.db" );
+        LinkedList<Event> eventList = new LinkedList<Event>(  );
+        Connection conn = startConn();
         Statement stmt;
         ResultSet rs;
         stmt = conn.createStatement();
@@ -28,11 +28,10 @@ public class EventDao {
     }
 
     public Event getEvent(String idEvent, int idTeacher) throws SQLException, ClassNotFoundException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         ResultSet rs;
-        pstmt = conn.prepareStatement( "SELECT * from partecipant WHERE name=? AND teacherid=?" );
+        pstmt = conn.prepareStatement( "SELECT * from partecipant WHERE eventid=? AND teacherid=?" );
         pstmt.setString( 1, idEvent );
         pstmt.setInt( 2, idTeacher );
         rs = pstmt.executeQuery();
@@ -50,9 +49,8 @@ public class EventDao {
     }
 
     public LinkedList<Event> getEventsByTeacher(int idTeacher) throws ClassNotFoundException, SQLException {
-        LinkedList<Event> eventList = null;
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        LinkedList<Event> eventList = new LinkedList<Event>(  );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         ResultSet rs;
         pstmt = conn.prepareStatement( "SELECT * from event WHERE  teacherid=?" );
@@ -71,9 +69,7 @@ public class EventDao {
     }
 
     public void addEvent(Event pEvent) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:C:\\Users\\jiovy\\Desktop\\gruppo9\\SQLlite\\gruppo9.db" );
-        Statement stmt;
+        Connection conn = startConn();
         PreparedStatement pstmt;
         pstmt = conn.prepareStatement( "INSERT INTO event " +
                 "(name,teacherid,date,type,description) values (?,?,?,?,?)" );
@@ -86,8 +82,7 @@ public class EventDao {
     }
 
     public void updateEvent(Event pEvent) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         Statement stmt;
         PreparedStatement pstmt;
         pstmt = conn.prepareStatement( "UPDATE event SET" +
@@ -103,8 +98,7 @@ public class EventDao {
     }
 
     public void deleteEvent(String idEvent, int idTeacher) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         ResultSet rs;
         pstmt = conn.prepareStatement( "DELETE from event WHERE name=? AND teacherid=?" );
@@ -125,13 +119,12 @@ public class EventDao {
 
 
     public Map<Student, Boolean> getPartecipants(String idEvent, int idTeacher) throws ClassNotFoundException, SQLException {
-        Map<Student, Boolean> partecipants = null;
+        Map<Student, Boolean> partecipants = new HashMap<Student, Boolean>(  );
         StudentDao studentDao = new StudentDao();
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         ResultSet rs;
-        pstmt = conn.prepareStatement( "SELECT * from partecipant WHERE name=? AND teacherid=?" );
+        pstmt = conn.prepareStatement( "SELECT * from partecipant WHERE eventid=? AND teacherid=?" );
         pstmt.setString( 1, idEvent );
         pstmt.setInt( 2, idTeacher );
         rs = pstmt.executeQuery();
@@ -145,8 +138,7 @@ public class EventDao {
     }
 
     public void setAllPatecipants(String idE, int idT) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         pstmt = conn.prepareStatement( "UPDATE partecipant SET" +
                 "(confirmed=?)" );
@@ -155,8 +147,7 @@ public class EventDao {
     }
 
     public void setPatecipant(String idE, int idT, int idS) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         pstmt = conn.prepareStatement( "UPDATE partecipant SET" +
                 "(confirmed=?) where (studentid=?,eventid=?,teacherid=?" );
@@ -168,8 +159,7 @@ public class EventDao {
     }
 
     public void updateEventPart(Student s1, String eventName, int idT, boolean b) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         if (b) {
             pstmt = conn.prepareStatement( "INSERT INTO partecipant " +
@@ -185,9 +175,11 @@ public class EventDao {
             pstmt.setInt( 2, idT );
             pstmt.setInt( 3, s1.getId() );
             pstmt.execute();
-
         }
-
-
+    }
+    private Connection startConn() throws ClassNotFoundException, SQLException {
+        Class.forName("org.postgresql.Driver");
+        String databaseURL = "jdbc:postgresql://localhost:5432/gruppo9DB";
+        return DriverManager.getConnection( databaseURL,"postgres","admin" );
     }
 }

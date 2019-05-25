@@ -1,35 +1,38 @@
-
-create table teacher(
-    name TEXT,
-    surname TEXT,
-    id NUMERIC,
+create table teacher
+(
+    name     TEXT,
+    lastname TEXT,
+    id       NUMERIC,
     PRIMARY KEY (id)
 );
 
-create table student(
-    name TEXT,
-    surname TEXT,
-    id NUMERIC,
+create table student
+(
+    name     TEXT,
+    lastname TEXT,
+    id       NUMERIC,
     PRIMARY KEY (id)
 );
-create table event(
-    name TEXT,
-    teacherid NUMERIC,
-    data TEXT,
-    type TEXT,
+create table event
+(
+    name        TEXT,
+    teacherid   NUMERIC,
+    date        TEXT,
+    type        TEXT,
     description TEXT,
-    PRIMARY KEY (name,teacherid),
-    FOREIGN KEY (teacherid) references teacher(id)    
+    PRIMARY KEY (name, teacherid),
+    FOREIGN KEY (teacherid) references teacher (id)
 );
 
-create table partecipant(
-    studentid  NUMERIC,
-    eventid TEXT,
+create table partecipant
+(
+    studentid NUMERIC,
+    eventid   TEXT,
     teacherid NUMERIC,
     confirmed BOOLEAN,
-    PRIMARY KEY (studentid,eventid,teacherid),
-    FOREIGN KEY (studentid) references student(id)    
-    FOREIGN KEY (teacherid,eventid) references event(teacherid,name)  
+    PRIMARY KEY (studentid, eventid, teacherid),
+    FOREIGN KEY (studentid) references student (id),
+    FOREIGN KEY (teacherid, eventid) references event (teacherid, name)
 
 
 );

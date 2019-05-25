@@ -5,14 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class StudentDao {
-    String path = "C:\\Users\\jiovy\\Desktop\\gruppo9\\students.txt";
-//    String path = "C:\\Users\\valer\\Documents\\GitHub\\gruppo9\\students.txt";
-
 
     public List<Student> getAllStudenti() throws ClassNotFoundException, SQLException {
-        LinkedList<Student> studentList = null;
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:C:\\Users\\jiovy\\Desktop\\gruppo9\\SQLlite\\gruppo9.db" );
+        LinkedList<Student> studentList = new LinkedList<Student>(  );
+        Connection conn = startConn();
         Statement stmt;
         ResultSet rs;
         stmt = conn.createStatement();
@@ -27,10 +23,11 @@ public class StudentDao {
         return studentList;
     }
 
+
+
     public Student getStudente(int studentid) throws ClassNotFoundException, SQLException {
         Student student = null;
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         ResultSet rs;
         pstmt = conn.prepareStatement( "SELECT * from student where id=?" );
@@ -47,8 +44,7 @@ public class StudentDao {
     }
 
     public void addStudente(Student pStudent) throws SQLException, ClassNotFoundException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:C:\\Users\\jiovy\\Desktop\\gruppo9\\SQLlite\\gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         pstmt = conn.prepareStatement( "insert  into student (name, lastname, id) values (?,?,?)" );
         pstmt.setString( 1, pStudent.getNome() );
@@ -60,10 +56,9 @@ public class StudentDao {
     }
 
     public void updateStudente(Student pStudent) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
-        pstmt = conn.prepareStatement( "update student SET (name =?,lastname=?) where (id=?)" );
+        pstmt = conn.prepareStatement( "update student SET(name =?,lastname=?) where (id=?)" );
         pstmt.setString( 1, pStudent.getNome() );
         pstmt.setString( 2, pStudent.getCognome() );
         pstmt.setInt( 3, pStudent.getId() );
@@ -73,8 +68,7 @@ public class StudentDao {
     }
 
     public void deleteStudente(int studentid) throws ClassNotFoundException, SQLException {
-        Class.forName( "org.sqlite.JDBC" );
-        Connection conn = DriverManager.getConnection( "jdbc:sqlite:SQLlite/gruppo9.db" );
+        Connection conn = startConn();
         PreparedStatement pstmt;
         pstmt = conn.prepareStatement( "delete from student where (id=?)" );
         pstmt.setInt( 1, studentid );
@@ -83,5 +77,10 @@ public class StudentDao {
         conn.close(); // termino la connessione
     }
 
+    private Connection startConn() throws ClassNotFoundException, SQLException {
+        Class.forName("org.postgresql.Driver");
+        String databaseURL = "jdbc:postgresql://localhost:5432/gruppo9DB";
+        return DriverManager.getConnection( databaseURL,"postgres","admin" );
+    }
 
 }

@@ -3,7 +3,7 @@ package com.gruppo9;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +21,7 @@ public class TeacherService {
     @Produces(MediaType.APPLICATION_XML)
     public String addEvent() throws SQLException, ClassNotFoundException {
 //        to do : FORM
-        Event event = new Event( "maker", new Date(), "tech1", "good1", 102 );
+        Event event = new Event( "maker", new Date( 24657 ), "tech1", "good1", 100 );
         eventDao.addEvent( event );
         return SUCCESS_RESULT;
     }

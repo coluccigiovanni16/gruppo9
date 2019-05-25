@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="gruppo9.db" uuid="e0e315cd-da29-4329-9974-04cf097b8608">
-      <driver-ref>sqlite.xerial</driver-ref>
+    <data-source source="LOCAL" name="gruppo9DB@localhost" uuid="084d8002-7112-471f-aae8-1fbf132417b5">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\jiovy\Desktop\gruppo9\SQLlite\gruppo9.db</jdbc-url>
-      <driver-properties>
-        <property name="enable_load_extension" value="true" />
-      </driver-properties>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/gruppo9DB</jdbc-url>
     </data-source>
   </component>
 </project>
