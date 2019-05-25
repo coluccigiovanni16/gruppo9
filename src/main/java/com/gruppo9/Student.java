@@ -5,9 +5,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @XmlRootElement(name = "student")
-public class Student implements Serializable {
+public class Student {
 
-    private static final long serialVersionUID = 1L;
+
     private String nome;
     private String cognome;
     private int id;

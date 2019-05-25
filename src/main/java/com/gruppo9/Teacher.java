@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @XmlRootElement(name = "teacher")
 
-public class Teacher implements Serializable {
+public class Teacher {
     private static final long serialVersionUID = 1L;
     private String nome;
     private String cognome;
@@ -21,9 +21,6 @@ public class Teacher implements Serializable {
         this.id = id;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getNome() {
         return nome;

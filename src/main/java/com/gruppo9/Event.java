@@ -8,9 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @XmlRootElement(name = "event")
-public class Event implements Serializable {
+public class Event {
 
-    private static final long serialVersionUID = 1L;
     private String nome;
     private Date date;
     private String type;
@@ -37,10 +36,6 @@ public class Event implements Serializable {
         this.description = description;
         this.teacher = teacher;
         this.participants = participants;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Date getDate() {

@@ -62,7 +62,7 @@ public class TeacherDao {
     public void updateDocente(Teacher pTeacher) throws ClassNotFoundException, SQLException {
         Connection conn = startConn();
         PreparedStatement pstmt;
-        pstmt = conn.prepareStatement( "update teacher set (name =?,lastname=?) where (id=?)" );
+        pstmt = conn.prepareStatement( "update teacher set name =?,lastname=? where id=?" );
         pstmt.setString( 1, pTeacher.getNome() );
         pstmt.setString( 2, pTeacher.getCognome() );
         pstmt.setInt( 3, pTeacher.getId() );
@@ -74,7 +74,7 @@ public class TeacherDao {
     public void deleteDocente(int teacherid) throws ClassNotFoundException, SQLException {
         Connection conn = startConn();
         PreparedStatement pstmt;
-        pstmt = conn.prepareStatement( "delete from teacher where (id=?)" );
+        pstmt = conn.prepareStatement( "delete from teacher where id=?" );
         pstmt.setInt( 1, teacherid );
         pstmt.execute();
         pstmt.close(); // rilascio le risorse

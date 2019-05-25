@@ -31,7 +31,7 @@ public class EventDao {
         Connection conn = startConn();
         PreparedStatement pstmt;
         ResultSet rs;
-        pstmt = conn.prepareStatement( "SELECT * from partecipant WHERE eventid=? AND teacherid=?" );
+        pstmt = conn.prepareStatement( "SELECT * from event WHERE name=? AND teacherid=?" );
         pstmt.setString( 1, idEvent );
         pstmt.setInt( 2, idTeacher );
         rs = pstmt.executeQuery();
@@ -79,40 +79,31 @@ public class EventDao {
         pstmt.setString( 4, pEvent.getDescription() );
         pstmt.setString( 5, pEvent.getType() );
         pstmt.execute();
+        pstmt.close();
+        conn.close();
     }
 
     public void updateEvent(Event pEvent) throws ClassNotFoundException, SQLException {
         Connection conn = startConn();
-        Statement stmt;
         PreparedStatement pstmt;
-        pstmt = conn.prepareStatement( "UPDATE event SET" +
-                "(date=?,type=?,description=?) where (name=?,teacherid=?)" );
+        pstmt = conn.prepareStatement( "UPDATE event SET date=?,type=?,description=? where name=? and teacherid=?" );
         pstmt.setDate( 1, (Date) pEvent.getDate() );
         pstmt.setString( 2, pEvent.getDescription() );
         pstmt.setString( 3, pEvent.getType() );
         pstmt.setString( 4, pEvent.getNome() );
         pstmt.setInt( 5, pEvent.getTeacher() );
-
-
         pstmt.execute();
+        pstmt.close();
+        conn.close();
     }
 
     public void deleteEvent(String idEvent, int idTeacher) throws ClassNotFoundException, SQLException {
         Connection conn = startConn();
         PreparedStatement pstmt;
-        ResultSet rs;
         pstmt = conn.prepareStatement( "DELETE from event WHERE name=? AND teacherid=?" );
         pstmt.setString( 1, idEvent );
         pstmt.setInt( 2, idTeacher );
-        rs = pstmt.executeQuery();
-        Event e;
-        while (rs.next()) {
-            e = new Event( rs.getString( "name" ),
-                    rs.getDate( "date" ),
-                    rs.getString( "type" ),
-                    rs.getString( "description" ),
-                    rs.getInt( "teacherid" ) );
-        }
+        pstmt.execute();
         pstmt.close(); // rilascio le risorse
         conn.close(); // termino la connessione
     }
@@ -140,25 +131,27 @@ public class EventDao {
     public void setAllPatecipants(String idE, int idT) throws ClassNotFoundException, SQLException {
         Connection conn = startConn();
         PreparedStatement pstmt;
-        pstmt = conn.prepareStatement( "UPDATE partecipant SET" +
-                "(confirmed=?)" );
+        pstmt = conn.prepareStatement( "UPDATE partecipant SET confirmed=? where eventid=? and teacherid=?" );
         pstmt.setBoolean( 1, true );
+        pstmt.setString( 2, idE );
+        pstmt.setInt( 3, idT );
         pstmt.execute();
     }
 
     public void setPatecipant(String idE, int idT, int idS) throws ClassNotFoundException, SQLException {
         Connection conn = startConn();
         PreparedStatement pstmt;
-        pstmt = conn.prepareStatement( "UPDATE partecipant SET" +
-                "(confirmed=?) where (studentid=?,eventid=?,teacherid=?" );
+        pstmt = conn.prepareStatement( "UPDATE partecipant SET confirmed=? where studentid=? and eventid=? and teacherid=?" );
         pstmt.setBoolean( 1, true );
         pstmt.setInt( 2, idS );
         pstmt.setString( 3, idE );
         pstmt.setInt( 4, idT );
         pstmt.execute();
+        pstmt.close();
+        conn.close();
     }
 
-    public void updateEventPart(Student s1, String eventName, int idT, boolean b) throws ClassNotFoundException, SQLException {
+    public void updateEventPart(Student s1, String eventName, int idT, boolean b) throws SQLException, ClassNotFoundException {
         Connection conn = startConn();
         PreparedStatement pstmt;
         if (b) {
@@ -170,16 +163,37 @@ public class EventDao {
             pstmt.setBoolean( 4, false );
             pstmt.execute();
         } else {
-            pstmt = conn.prepareStatement( "DELETE FROM partecipant WHERE (eventid=?,teacherid=?,studentid=?)" );
+            pstmt = conn.prepareStatement( "DELETE FROM partecipant WHERE eventid=? and teacherid=? and studentid=?" );
             pstmt.setString( 1, eventName );
             pstmt.setInt( 2, idT );
             pstmt.setInt( 3, s1.getId() );
             pstmt.execute();
         }
+        pstmt.close();
+        conn.close();
     }
-    private Connection startConn() throws ClassNotFoundException, SQLException {
+
+
+    private Connection startConn() throws SQLException, ClassNotFoundException {
         Class.forName("org.postgresql.Driver");
         String databaseURL = "jdbc:postgresql://localhost:5432/gruppo9DB";
         return DriverManager.getConnection( databaseURL,"postgres","admin" );
+    }
+
+    public String getEventDescription(String name, int idT) throws SQLException, ClassNotFoundException {
+        Connection conn = startConn();
+        PreparedStatement pstmt;
+        ResultSet rs;
+        pstmt = conn.prepareStatement( "SELECT description from event WHERE  name=? and teacherid=?" );
+        pstmt.setString(1,name);
+        pstmt.setInt( 2,idT );
+        rs = pstmt.executeQuery();
+        String desc=null;
+        while (rs.next()) {
+            desc=rs.getString( "description" );
+        }
+        pstmt.close(); // rilascio le risorse
+        conn.close(); // termino la connessione
+        return desc;
     }
 }

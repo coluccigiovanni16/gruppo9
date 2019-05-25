@@ -4,9 +4,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 @Path("/Initialize")
 public class Inizialize {
 
@@ -24,18 +21,14 @@ public class Inizialize {
         Student s1 = new Student( "name1", "prename1", 2 );
         studentDao.addStudente( s );
         studentDao.addStudente( s1 );
-        Map<Student, Boolean> p = new HashMap<Student, Boolean>();
-        p.put( s, false );
-        p.put( s1, false );
         Teacher t = new Teacher( "nom", "cogn", 100 );
         Teacher t1 = new Teacher( "nom1", "cogn1", 101 );
         teacherDao.addDocente( t );
         teacherDao.addDocente( t1 );
-        Event event = new Event( "maker", new Date( 2019,05,24  ), "tech1", "good1", 100,p );
-        Event event1 = new Event( "bigdata", new Date( 2019,05,23 ), "tech2", "good2", 101,p );
+        Event event = new Event( "maker", new Date( 2019,05,24  ), "tech1", "good1", 100 );
+        Event event1 = new Event( "bigdata", new Date( 2019,05,23 ), "tech2", "good2", 101 );
         eventDao.addEvent( event );
         eventDao.addEvent( event1 );
-
         return SUCCESS_RESULT;
     }
 

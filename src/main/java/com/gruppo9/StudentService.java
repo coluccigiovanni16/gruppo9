@@ -39,6 +39,25 @@ public class StudentService {
 
     }
 
+    @GET
+    @Path("/teachers/{idT}/events/{idE}")
+    @Produces(MediaType.APPLICATION_XML)
+    public String getEventDescription(@PathParam("idE") String name, @PathParam("idT") int idT) throws SQLException, ClassNotFoundException {
+//        definire nel form un booleano prenota/cancella prenotazione
+         return "<desciption>"+eventDao.getEventDescription( name, idT )+"</desciption>";
+    }
+
+    @DELETE
+    @Path("/teachers/{idT}/events/{idE}")
+    @Produces(MediaType.APPLICATION_XML)
+    public String deleteStudentPartecipation(@PathParam("idE") String name, @PathParam("idT") int idT) throws SQLException, ClassNotFoundException {
+        Student s1 = new Student( "nome", "cognome", 1 );
+//        definire nel form un booleano prenota/cancella prenotazione
+        eventDao.updateEventPart( s1, name, idT, false );
+        return SUCCESS_RESULT;
+    }
+
+
 
     @OPTIONS
     @Path("/teachers")
@@ -51,6 +70,14 @@ public class StudentService {
     @Path("/teachers/{idT}/events")
     @Produces(MediaType.APPLICATION_XML)
     public String getSupportedOperationsE() {
-        return "<operations>GET,PUT</operations>";
+        return "<operations>GET</operations>";
     }
+
+    @OPTIONS
+    @Path("/teachers/{idT}/events/{idE}")
+    @Produces(MediaType.APPLICATION_XML)
+    public String getSupportedOperationsSingleE() {
+        return "<operations>GET,PUT,DELETE</operations>";
+    }
+
 }
