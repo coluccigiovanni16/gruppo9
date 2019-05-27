@@ -1,14 +1,16 @@
 package com.gruppo9;
 
+import javax.servlet.http.HttpServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.sql.SQLException;
 import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
-@Path("/TeacherService")
-public class TeacherService {
+@Path("/TeacherService/{idT}")
+public class TeacherService extends HttpServlet {
+
+    @PathParam("idT") int idT;
 
     EventDao eventDao = new EventDao();
     private static final String SUCCESS_RESULT = "<result>success</result>";
@@ -19,7 +21,7 @@ public class TeacherService {
     @POST
     @Path("/events")
     @Produces(MediaType.APPLICATION_XML)
-    public String addEvent() throws SQLException, ClassNotFoundException {
+    public String addEvent() {
 //        to do : FORM
         Event event = new Event( "web", new Date( 2019,3,3 ), "inserisce", "good1", 100 );
         eventDao.addEvent( event );
@@ -31,15 +33,14 @@ public class TeacherService {
     @GET
     @Path("/events")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Event> getEvents() throws SQLException, ClassNotFoundException {
-        return eventDao.getAllEvents();
+    public List<Event> getEvents(int idT) {
+        return eventDao.getAllEvents(idT);
     }
 
     @GET
     @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public Event getEvent(@PathParam("idE") String idE) throws SQLException, ClassNotFoundException {
-        int idT=100;
+    public Event getEvent(@PathParam("idE") String idE){
         return eventDao.getEvent( idE,idT );
     }
 
@@ -48,8 +49,7 @@ public class TeacherService {
     @GET
     @Path("/events/{idE}/partecipants")
     @Produces(MediaType.APPLICATION_XML)
-    public Set<Student> getPartecipants(@PathParam("idE") String idE) throws SQLException, ClassNotFoundException {
-        int idT = 100;
+    public Set<Student> getPartecipants(@PathParam("idE") String idE)  {
         return eventDao.getPartecipants( idE,idT).keySet();
     }
 
@@ -58,8 +58,8 @@ public class TeacherService {
     @GET
     @Path("/events/{idE}/partecipants/{idS}")
     @Produces(MediaType.APPLICATION_XML)
-    public Student getPartecipant(@PathParam("idE") String idE) throws SQLException, ClassNotFoundException {
-        int idS = 1;
+    public Student getPartecipant(@PathParam("idE") String idE,
+                                  @PathParam("idS") int idS)  {
         return new StudentDao().getStudente( idS );
     }
 
@@ -68,8 +68,7 @@ public class TeacherService {
     @Path("/events/{idE}/partecipants")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String confimAllPartecipants(@PathParam("idE") String idE) throws SQLException, ClassNotFoundException {
-        int idT = 100;
+    public String confimAllPartecipants(@PathParam("idE") String idE)  {
         eventDao.setAllPatecipants( idE, idT );
 
         return SUCCESS_RESULT;
@@ -80,9 +79,8 @@ public class TeacherService {
     @Path("/events/{idE}/partecipants/{idS}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String confimPartecipant(@PathParam("idE") String idE) throws SQLException, ClassNotFoundException {
-        int idT = 100;
-        int idS = 1;
+    public String confimPartecipant(@PathParam("idE") String idE,
+                                    @PathParam("idS") int idS)  {
         eventDao.setPatecipant( idE, idT, idS );
         return SUCCESS_RESULT;
     }
@@ -91,10 +89,9 @@ public class TeacherService {
     @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
 //    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-   public String modifyEvent(@PathParam("idE") String idE) throws SQLException, ClassNotFoundException {
-       int idT=100;
+   public String modifyEvent(@PathParam("idE") String idE)  {
        // to do : FORM
-        Event e=new Event( "maker", new Date( 24,3,31 ), "modica", "riuscita", 100 );
+        Event e=new Event( "maker", new Date( 24,3,31 ), "modica", "riuscita", idT );
         eventDao.updateEvent(e);
         return SUCCESS_RESULT;
    }
@@ -103,8 +100,7 @@ public class TeacherService {
     @DELETE
     @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public String deleteEvent(@PathParam("idE") String idE) throws SQLException, ClassNotFoundException {
-        int idT = 100;
+    public String deleteEvent(@PathParam("idE") String idE) {
         eventDao.deleteEvent( idE, idT );
         return SUCCESS_RESULT;
     }

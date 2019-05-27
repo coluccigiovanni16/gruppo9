@@ -13,8 +13,33 @@
 			<param-value>com.gruppo9</param-value>
 		</init-param>
 	</servlet>
+	<servlet>
+		<servlet-name>Inizialize</servlet-name>
+		<servlet-class>com.gruppo9.Inizialize</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>StudentService</servlet-name>
+		<servlet-class>com.gruppo9.StudentService</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TeacherService</servlet-name>
+		<servlet-class>com.gruppo9.TeacherService</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Jersey RESTful Application</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Inizialize</servlet-name>
+		<url-pattern>/Inizialize</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>StudentService</servlet-name>
+		<url-pattern>/StudentService/{idS}/teachers</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TeacherService</servlet-name>
+		<url-pattern>/TeacherService/{idT}/events</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 public class WebServiceTester  {
 
     private Client client;
-    private String REST_SERVICE_URL = "http://localhost:8081/rest/StudentService/studenti";
+    private String REST_SERVICE_URL = "http://localhost:8080/rest/StudentService/studenti";
     private static final String SUCCESS_RESULT="<result>success</result>";
     private static final String PASS = "pass";
     private static final String FAIL = "fail";
