@@ -1,41 +1,38 @@
 package com.gruppo9;
 
-import javax.servlet.http.HttpServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-@Path("/StudentService/{idS}")
-public class StudentService extends HttpServlet {
-
-    @PathParam("idS") int idS;
+@Path("/StudentService")
+public class StudentService {
 
     TeacherDao teacherDao = new TeacherDao();
     EventDao eventDao = new EventDao();
-    StudentDao studentDao=new StudentDao();
     private static final String SUCCESS_RESULT = "<result>success</result>";
 
 
     @GET
     @Path("/teachers")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Teacher> getTeachers() {
+    public List<Teacher> getTeachers() throws SQLException, ClassNotFoundException {
         return teacherDao.getAllDocenti();
     }
 
     @GET
     @Path("/teachers/{idT}/events")
     @Produces(MediaType.APPLICATION_XML)
-    public LinkedList<Event> getEventsByTeacher(@PathParam("idT") int id)  {
+    public LinkedList<Event> getEventsByTeacher(@PathParam("idT") int id) throws SQLException, ClassNotFoundException {
         return eventDao.getEventsByTeacher( id );
     }
 
     @PUT
     @Path("/teachers/{idT}/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public String updateStudentPartecipation(@PathParam("idE") String name, @PathParam("idT") int idT)  {
-        Student s1 = studentDao.getStudente(idS);
+    public String updateStudentPartecipation(@PathParam("idE") String name, @PathParam("idT") int idT) throws SQLException, ClassNotFoundException {
+        Student s1 = new Student( "nome", "cognome", 1 );
 //        definire nel form un booleano prenota/cancella prenotazione
         eventDao.updateEventPart( s1, name, idT, true );
         return SUCCESS_RESULT;
@@ -45,7 +42,7 @@ public class StudentService extends HttpServlet {
     @GET
     @Path("/teachers/{idT}/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public String getEventDescription(@PathParam("idE") String name, @PathParam("idT") int idT)  {
+    public String getEventDescription(@PathParam("idE") String name, @PathParam("idT") int idT) throws SQLException, ClassNotFoundException {
 //        definire nel form un booleano prenota/cancella prenotazione
          return "<desciption>"+eventDao.getEventDescription( name, idT )+"</desciption>";
     }
@@ -53,8 +50,8 @@ public class StudentService extends HttpServlet {
     @DELETE
     @Path("/teachers/{idT}/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public String deleteStudentPartecipation(@PathParam("idE") String name, @PathParam("idT") int idT)  {
-        Student s1 = studentDao.getStudente(idS);
+    public String deleteStudentPartecipation(@PathParam("idE") String name, @PathParam("idT") int idT) throws SQLException, ClassNotFoundException {
+        Student s1 = new Student( "nome", "cognome", 1 );
 //        definire nel form un booleano prenota/cancella prenotazione
         eventDao.updateEventPart( s1, name, idT, false );
         return SUCCESS_RESULT;
