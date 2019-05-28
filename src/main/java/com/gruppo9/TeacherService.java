@@ -1,6 +1,5 @@
 package com.gruppo9;
 
-import javax.servlet.http.HttpServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.Date;
@@ -8,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Path("/TeacherService/{idT}")
-public class TeacherService extends HttpServlet {
+public class TeacherService {
 
     @PathParam("idT")
     int idT;
@@ -28,10 +27,9 @@ public class TeacherService extends HttpServlet {
                            @FormParam("month") int month,
                            @FormParam("year") int year,
                            @FormParam("type") String type,
-                           @FormParam("description") String desc,
-                           @FormParam("teacher") int id) {
+                           @FormParam("description") String desc) {
 //        to do : FORM
-        Event event = new Event(name, new Date(year, month, day), type, desc, id);
+        Event event = new Event(name, new Date(year, month, day), type, desc, idT);
         eventDao.addEvent(event);
         return SUCCESS_RESULT;
     }

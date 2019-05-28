@@ -252,10 +252,11 @@ public class EventDao {
         try{
         LinkedList<Event> eventList = new LinkedList<Event>(  );
         Connection conn = startConn();
-        Statement stmt;
+        PreparedStatement pstmt;
         ResultSet rs;
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery( "SELECT * from event where teacherid="+idT );
+        pstmt = conn.prepareStatement("SELECT * from event where teacherid=?");
+        pstmt.setInt(1,idT);
+        rs = pstmt.executeQuery(  );
         while (rs.next()) {
             eventList.add( new Event( rs.getString( "name" ),
                     rs.getDate( "date" ),
@@ -263,7 +264,7 @@ public class EventDao {
                     rs.getString( "description" ),
                     rs.getInt( "teacherid" ) ) );
         }
-        stmt.close(); // rilascio le risorse
+        pstmt.close(); // rilascio le risorse
         conn.close(); // termino la connessione
         return eventList;
     } catch (Exception e) {

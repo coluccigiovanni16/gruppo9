@@ -22,6 +22,8 @@ create table event
     description TEXT,
     PRIMARY KEY (name, teacherid),
     FOREIGN KEY (teacherid) references teacher (id)
+    on delete cascade
+    on update cascade
 );
 
 create table partecipant
@@ -32,9 +34,11 @@ create table partecipant
     confirmed BOOLEAN,
     PRIMARY KEY (studentid, eventid, teacherid),
     FOREIGN KEY (studentid) references student (id),
+    on delete cascade
+    on update cascade
     FOREIGN KEY (teacherid, eventid) references event (teacherid, name)
-
-
+    on delete cascade
+    on update cascade
 );
 
 

@@ -18,7 +18,7 @@
     <input type="radio" name="categories" value="TeacherService" checked> Teacher
     <input type="radio" name="categories" value="StudentService"> Student<br>
     <br>
-    <input type="submit" value="Log In">
+    <input type="submit" value="Log In" >
 </form>
 </body>
 </html>

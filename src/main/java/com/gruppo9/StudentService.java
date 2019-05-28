@@ -1,13 +1,12 @@
 package com.gruppo9;
 
-import javax.servlet.http.HttpServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.LinkedList;
 import java.util.List;
 
 @Path("/StudentService/{idS}")
-public class StudentService extends HttpServlet {
+public class StudentService {
 
     @PathParam("idS") int idS;
 
