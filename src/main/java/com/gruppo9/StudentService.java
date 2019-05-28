@@ -46,7 +46,7 @@ public class StudentService {
     @Produces(MediaType.APPLICATION_XML)
     public String getEventDescription(@PathParam("idE") String name, @PathParam("idT") int idT)  {
 //        definire nel form un booleano prenota/cancella prenotazione
-         return "<desciption>"+eventDao.getEventDescription( name, idT )+"</desciption>";
+         return "<description>"+eventDao.getEventDescription( name, idT )+"</description>";
     }
 
     @DELETE

@@ -1,0 +1,1 @@
+INSERT INTO public.partecipant (studentid, eventid, teacherid, confirmed) VALUES (1, 'mobile', 1, true);

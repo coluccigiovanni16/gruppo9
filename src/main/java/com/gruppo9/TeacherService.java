@@ -39,7 +39,7 @@ public class TeacherService {
     @GET
     @Path("/events")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Event> getEvents(int idT) {
+    public List<Event> getEvents() {
         return eventDao.getAllEvents(idT);
     }
 

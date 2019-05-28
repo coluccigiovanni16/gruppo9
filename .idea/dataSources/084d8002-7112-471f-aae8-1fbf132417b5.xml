@@ -5,10 +5,10 @@
       <ServerVersion>10.8</ServerVersion>
     </root>
     <database id="2" parent="1" name="gruppo9DB">
-      <ObjectId>16569</ObjectId>
-      <StateNumber>562</StateNumber>
+      <ObjectId>16394</ObjectId>
+      <StateNumber>561</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>722</IntrospectionStateNumber>
+      <IntrospectionStateNumber>709</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
@@ -86,7 +86,7 @@
       <Comment>standard public schema</Comment>
       <StateNumber>352</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>723</IntrospectionStateNumber>
+      <IntrospectionStateNumber>710</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -147,122 +147,122 @@
       <SchemaId>11</SchemaId>
     </extension>
     <table id="23" parent="15" name="event">
-      <ObjectId>16586</ObjectId>
+      <ObjectId>16718</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>590</StateNumber>
+      <StateNumber>678</StateNumber>
     </table>
     <table id="24" parent="15" name="partecipant">
-      <ObjectId>16599</ObjectId>
+      <ObjectId>16731</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>590</StateNumber>
+      <StateNumber>678</StateNumber>
     </table>
     <table id="25" parent="15" name="student">
-      <ObjectId>16578</ObjectId>
+      <ObjectId>16710</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>586</StateNumber>
+      <StateNumber>678</StateNumber>
     </table>
     <table id="26" parent="15" name="teacher">
-      <ObjectId>16570</ObjectId>
+      <ObjectId>16702</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>582</StateNumber>
+      <StateNumber>677</StateNumber>
     </table>
     <column id="27" parent="23" name="name">
       <Position>1</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>565</StateNumber>
+      <StateNumber>677</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="28" parent="23" name="teacherid">
       <Position>2</Position>
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>565</StateNumber>
+      <StateNumber>677</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <column id="29" parent="23" name="date">
       <Position>3</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>565</StateNumber>
+      <StateNumber>677</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="30" parent="23" name="type">
       <Position>4</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>565</StateNumber>
+      <StateNumber>677</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="31" parent="23" name="description">
       <Position>5</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>565</StateNumber>
+      <StateNumber>677</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <index id="32" parent="23" name="event_pkey">
-      <ObjectId>16592</ObjectId>
-      <StateNumber>565</StateNumber>
+      <ObjectId>16724</ObjectId>
+      <StateNumber>677</StateNumber>
       <ColNames>name
 teacherid</ColNames>
       <Unique>1</Unique>
+      <Primary>1</Primary>
     </index>
     <key id="33" parent="23" name="event_pkey">
-      <ObjectId>16593</ObjectId>
-      <StateNumber>565</StateNumber>
+      <ObjectId>16725</ObjectId>
+      <StateNumber>677</StateNumber>
       <ColNames>name
 teacherid</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>event_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="34" parent="23" name="event_teacherid_fkey">
-      <ObjectId>16617</ObjectId>
-      <StateNumber>582</StateNumber>
+      <ObjectId>16726</ObjectId>
+      <StateNumber>677</StateNumber>
       <ColNames>teacherid</ColNames>
-      <RefTableId>16570</RefTableId>
+      <RefTableId>16702</RefTableId>
       <RefColPositions>3</RefColPositions>
       <RefTableName>teacher</RefTableName>
       <RefKeyName>teacher_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
-      <OnDelete>cascade</OnDelete>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="35" parent="24" name="studentid">
       <Position>1</Position>
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>566</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <column id="36" parent="24" name="eventid">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>566</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="37" parent="24" name="teacherid">
       <Position>3</Position>
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>566</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <column id="38" parent="24" name="confirmed">
       <Position>4</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>566</StateNumber>
+      <StateNumber>678</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <index id="39" parent="24" name="partecipant_pkey">
-      <ObjectId>16605</ObjectId>
-      <StateNumber>566</StateNumber>
+      <ObjectId>16737</ObjectId>
+      <StateNumber>678</StateNumber>
       <ColNames>studentid
 eventid
 teacherid</ColNames>
       <Unique>1</Unique>
+      <Primary>1</Primary>
     </index>
     <key id="40" parent="24" name="partecipant_pkey">
-      <ObjectId>16606</ObjectId>
-      <StateNumber>566</StateNumber>
+      <ObjectId>16738</ObjectId>
+      <StateNumber>678</StateNumber>
       <ColNames>studentid
 eventid
 teacherid</ColNames>
@@ -270,58 +270,55 @@ teacherid</ColNames>
       <UnderlyingIndexName>partecipant_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="41" parent="24" name="partecipant_studentid_fkey">
-      <ObjectId>16622</ObjectId>
-      <StateNumber>586</StateNumber>
+      <ObjectId>16739</ObjectId>
+      <StateNumber>678</StateNumber>
       <ColNames>studentid</ColNames>
-      <RefTableId>16578</RefTableId>
+      <RefTableId>16710</RefTableId>
       <RefColPositions>3</RefColPositions>
       <RefTableName>student</RefTableName>
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
-      <OnDelete>cascade</OnDelete>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <foreign-key id="42" parent="24" name="partecipant_teacherid_fkey">
-      <ObjectId>16627</ObjectId>
-      <StateNumber>590</StateNumber>
+      <ObjectId>16744</ObjectId>
+      <StateNumber>678</StateNumber>
       <ColNames>teacherid
 eventid</ColNames>
-      <RefTableId>16586</RefTableId>
+      <RefTableId>16718</RefTableId>
       <RefColPositions>2,1</RefColPositions>
       <RefTableName>event</RefTableName>
       <RefColNames>teacherid
 name</RefColNames>
-      <OnDelete>cascade</OnDelete>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="43" parent="25" name="name">
       <Position>1</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>564</StateNumber>
+      <StateNumber>676</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="44" parent="25" name="lastname">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>564</StateNumber>
+      <StateNumber>676</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="45" parent="25" name="id">
       <Position>3</Position>
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>564</StateNumber>
+      <StateNumber>676</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <index id="46" parent="25" name="student_pkey">
-      <ObjectId>16584</ObjectId>
-      <StateNumber>564</StateNumber>
+      <ObjectId>16716</ObjectId>
+      <StateNumber>676</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
+      <Primary>1</Primary>
     </index>
     <key id="47" parent="25" name="student_pkey">
-      <ObjectId>16585</ObjectId>
-      <StateNumber>564</StateNumber>
+      <ObjectId>16717</ObjectId>
+      <StateNumber>676</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
@@ -329,31 +326,32 @@ name</RefColNames>
     <column id="48" parent="26" name="name">
       <Position>1</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>563</StateNumber>
+      <StateNumber>675</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="49" parent="26" name="lastname">
       <Position>2</Position>
       <DataType>text|0s</DataType>
-      <StateNumber>563</StateNumber>
+      <StateNumber>675</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="50" parent="26" name="id">
       <Position>3</Position>
       <DataType>numeric|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>563</StateNumber>
+      <StateNumber>675</StateNumber>
       <TypeId>1700</TypeId>
     </column>
     <index id="51" parent="26" name="teacher_pkey">
-      <ObjectId>16576</ObjectId>
-      <StateNumber>563</StateNumber>
+      <ObjectId>16708</ObjectId>
+      <StateNumber>675</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
+      <Primary>1</Primary>
     </index>
     <key id="52" parent="26" name="teacher_pkey">
-      <ObjectId>16577</ObjectId>
-      <StateNumber>563</StateNumber>
+      <ObjectId>16709</ObjectId>
+      <StateNumber>675</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>teacher_pkey</UnderlyingIndexName>

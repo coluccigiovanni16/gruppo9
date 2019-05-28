@@ -249,6 +249,7 @@ public class EventDao {
     }
 
     public List<Event> getAllEvents(int idT) {
+        System.out.println("idT");
         try{
         LinkedList<Event> eventList = new LinkedList<Event>(  );
         Connection conn = startConn();
