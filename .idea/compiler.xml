@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="User Management" />
         <module name="gruppo9" />
         <module name="test-jersey-rest-maven-tomcat" />
-        <module name="User Management" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="gruppo9DB@localhost">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.14">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.15">
     <root id="1">
       <ServerVersion>10.8</ServerVersion>
     </root>
@@ -50,8 +50,8 @@
       <CreateRole>1</CreateRole>
       <CreateDb>1</CreateDb>
       <CanLogin>1</CanLogin>
-      <Replication>1</Replication>
       <ConnectionLimit>-1</ConnectionLimit>
+      <Replication>1</Replication>
       <BypassRls>1</BypassRls>
     </role>
     <schema id="10" parent="2" name="information_schema">
@@ -210,8 +210,8 @@ teacherid</ColNames>
       <StateNumber>565</StateNumber>
       <ColNames>name
 teacherid</ColNames>
-      <UnderlyingIndexName>event_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>event_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="34" parent="23" name="event_teacherid_fkey">
       <ObjectId>16617</ObjectId>
@@ -266,8 +266,8 @@ teacherid</ColNames>
       <ColNames>studentid
 eventid
 teacherid</ColNames>
-      <UnderlyingIndexName>partecipant_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>partecipant_pkey</UnderlyingIndexName>
     </key>
     <foreign-key id="41" parent="24" name="partecipant_studentid_fkey">
       <ObjectId>16622</ObjectId>
@@ -323,8 +323,8 @@ name</RefColNames>
       <ObjectId>16585</ObjectId>
       <StateNumber>564</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
     </key>
     <column id="48" parent="26" name="name">
       <Position>1</Position>
@@ -355,8 +355,8 @@ name</RefColNames>
       <ObjectId>16577</ObjectId>
       <StateNumber>563</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>teacher_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+      <UnderlyingIndexName>teacher_pkey</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

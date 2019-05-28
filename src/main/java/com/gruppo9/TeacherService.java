@@ -10,7 +10,8 @@ import java.util.Set;
 @Path("/TeacherService/{idT}")
 public class TeacherService extends HttpServlet {
 
-    @PathParam("idT") int idT;
+    @PathParam("idT")
+    int idT;
 
     EventDao eventDao = new EventDao();
     private static final String SUCCESS_RESULT = "<result>success</result>";
@@ -21,10 +22,17 @@ public class TeacherService extends HttpServlet {
     @POST
     @Path("/events")
     @Produces(MediaType.APPLICATION_XML)
-    public String addEvent() {
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String addEvent(@FormParam("name") String name,
+                           @FormParam("day") int day,
+                           @FormParam("month") int month,
+                           @FormParam("year") int year,
+                           @FormParam("type") String type,
+                           @FormParam("description") String desc,
+                           @FormParam("teacher") int id) {
 //        to do : FORM
-        Event event = new Event( "web", new Date( 2019,3,3 ), "inserisce", "good1", 100 );
-        eventDao.addEvent( event );
+        Event event = new Event(name, new Date(year, month, day), type, desc, id);
+        eventDao.addEvent(event);
         return SUCCESS_RESULT;
     }
 
@@ -40,8 +48,8 @@ public class TeacherService extends HttpServlet {
     @GET
     @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-    public Event getEvent(@PathParam("idE") String idE){
-        return eventDao.getEvent( idE,idT );
+    public Event getEvent(@PathParam("idE") String idE) {
+        return eventDao.getEvent(idE, idT);
     }
 
     //    SHOW ALL PARTECIPANTS OF AN EVENT(ONLY IF IS OF THE SPECIFIC TEACHER)
@@ -49,8 +57,8 @@ public class TeacherService extends HttpServlet {
     @GET
     @Path("/events/{idE}/partecipants")
     @Produces(MediaType.APPLICATION_XML)
-    public Set<Student> getPartecipants(@PathParam("idE") String idE)  {
-        return eventDao.getPartecipants( idE,idT).keySet();
+    public Set<Student> getPartecipants(@PathParam("idE") String idE) {
+        return eventDao.getPartecipants(idE, idT).keySet();
     }
 
     //    SHOW ALL PARTECIPANTS OF AN EVENT(ONLY IF IS OF THE SPECIFIC TEACHER)
@@ -59,8 +67,8 @@ public class TeacherService extends HttpServlet {
     @Path("/events/{idE}/partecipants/{idS}")
     @Produces(MediaType.APPLICATION_XML)
     public Student getPartecipant(@PathParam("idE") String idE,
-                                  @PathParam("idS") int idS)  {
-        return new StudentDao().getStudente( idS );
+                                  @PathParam("idS") int idS) {
+        return new StudentDao().getStudente(idS);
     }
 
     // THE TEACHER CAN CONFIRM ALL THE PARTECIPANTS OF HIS EVENT
@@ -68,8 +76,8 @@ public class TeacherService extends HttpServlet {
     @Path("/events/{idE}/partecipants")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String confimAllPartecipants(@PathParam("idE") String idE)  {
-        eventDao.setAllPatecipants( idE, idT );
+    public String confimAllPartecipants(@PathParam("idE") String idE) {
+        eventDao.setAllPatecipants(idE, idT);
 
         return SUCCESS_RESULT;
     }
@@ -80,28 +88,33 @@ public class TeacherService extends HttpServlet {
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public String confimPartecipant(@PathParam("idE") String idE,
-                                    @PathParam("idS") int idS)  {
-        eventDao.setPatecipant( idE, idT, idS );
+                                    @PathParam("idS") int idS) {
+        eventDao.setPatecipant(idE, idT, idS);
         return SUCCESS_RESULT;
     }
 
-      @PUT
+    @PUT
     @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
-//    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-   public String modifyEvent(@PathParam("idE") String idE)  {
-       // to do : FORM
-        Event e=new Event( "maker", new Date( 24,3,31 ), "modica", "riuscita", idT );
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String modifyEvent(@PathParam("idE") String idE,
+                              @FormParam("day") int day,
+                              @FormParam("month") int month,
+                              @FormParam("year") int year,
+                              @FormParam("type") String type,
+                              @FormParam("description") String desc) {
+        // to do : FORM
+        Event e = new Event(idE, new Date(year, month  , day), type, desc, idT);
         eventDao.updateEvent(e);
         return SUCCESS_RESULT;
-   }
+    }
 
     //    THE TEACHER CAN DELETE HIS EVENT
     @DELETE
     @Path("/events/{idE}")
     @Produces(MediaType.APPLICATION_XML)
     public String deleteEvent(@PathParam("idE") String idE) {
-        eventDao.deleteEvent( idE, idT );
+        eventDao.deleteEvent(idE, idT);
         return SUCCESS_RESULT;
     }
 
