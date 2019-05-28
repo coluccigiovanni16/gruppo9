@@ -16,7 +16,6 @@ public class TeacherDao {
         stmt = conn.createStatement();
         rs = stmt.executeQuery("SELECT * from teacher");
         while (rs.next()) {
-            System.out.println(rs.getString("name"));
             teachersList.add(new Teacher(rs.getString("name"),
                     rs.getString("lastname"),
                     rs.getInt("id")));

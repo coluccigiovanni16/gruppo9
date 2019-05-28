@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Path("/TeacherService/{idT}")
-public class TeacherService extends HttpServlet {
-
+public class TeacherService {
     @PathParam("idT")
     int idT;
 
@@ -41,7 +40,7 @@ public class TeacherService extends HttpServlet {
     @GET
     @Path("/events")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Event> getEvents(int idT) {
+    public List<Event> getEvents() {
         return eventDao.getAllEvents(idT);
     }
 

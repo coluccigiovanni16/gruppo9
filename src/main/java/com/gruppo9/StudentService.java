@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Path("/StudentService/{idS}")
-public class StudentService extends HttpServlet {
+public class StudentService   {
 
     @PathParam("idS") int idS;
 

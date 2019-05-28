@@ -1,80 +1,46 @@
 package com.gruppo9;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.io.IOException;
-import java.net.URI;
-import java.sql.Date;
-@Path("/")
-public class Inizialize extends HttpServlet {
 
-    EventDao eventDao = new EventDao();
-    StudentDao studentDao = new StudentDao();
-    TeacherDao teacherDao = new TeacherDao();
+import javax.ws.rs.Path;
+import java.util.Scanner;
+
+@Path("/")
+public class Inizialize {
+
     private static final String SUCCESS_RESULT = "<result>success</result>";
 
+    public static void main(String[] args) {
+        EventDao eventDao = new EventDao();
+        StudentDao studentDao = new StudentDao();
+        TeacherDao teacherDao = new TeacherDao();
+        //Istanzia scanner con standard input
+        Scanner scan = new Scanner( System.in );
+        //Chiede di introdurre il tipo
+        int category = -1;
+        do {
+            System.out.println( "Introduci categoria:\n 1)Teacher\n 2)Student" );
+            category = scan.nextInt();
+        }
+        while (category == 1 || category == 2);
+        //Chiede di introdurre nome e cognome
+        System.out.println( "Introduci nome :" );
+        String nome = scan.nextLine(); //qui il programma attende l'immissione dei dati
+        System.out.println( "Introduci  cognome:" );
+        String cognome = scan.nextLine(); //qui il programma attende l'immissione dei dati
+        //Chiede di introdurre la matricola
+        System.out.println( "Introduci il tuo identificativo:" );
+        int id = scan.nextInt();
+        if (category == 1) {
+            Teacher t = new Teacher( nome, cognome, id );
+            teacherDao.addDocente( t );
+            MenuTeacher menuTeacher = new MenuTeacher( t );
+        } else if (category == 1) {
+            Student s = new Student( nome, cognome, id );
+            studentDao.addStudente( s );
+            MenuStudent menuStudent = new MenuStudent( s );
+        }
 
-    @POST
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void create(@FormParam("identifier") int id,
-                           @FormParam("firstname") String name,
-                           @FormParam("lastname") String lastname,
-                           @FormParam("categories") String categories,
-                           @Context HttpServletResponse response) throws IOException {
 
-        if (categories.equals("TeacherService")) {
-            TeacherDao td = new TeacherDao();
-            Teacher t = new Teacher(name, lastname, id);
-            if (td.getDocente(id) == null) {
-                td.addDocente(t);
-            } else {
-                td.updateDocente(t);
-            }
-            response.sendRedirect("/TeacherService/"+id+"/events");
-        } else if (categories.equals("StudentService")) {
-            StudentDao sd = new StudentDao();
-            Student s = new Student(name, lastname, id);
-            if (sd.getStudente(id) == null) {
-                sd.addStudente(s);
-            } else {
-                sd.updateStudente(s);
-            }
-            response.sendRedirect("/StudentService/"+id+"/teachers");
-        } else response.sendError(400);
-    }
-    @GET
-    @Path("/create")
-    public String createAll(){
-        Student s = new Student( "name", "prename", 1 );
-        Student s1 = new Student( "name1", "prename1", 2 );
-        studentDao.addStudente( s );
-        studentDao.addStudente( s1 );
-        Teacher t = new Teacher( "nom", "cogn", 100 );
-        Teacher t1 = new Teacher( "nom1", "cogn1", 101 );
-        teacherDao.addDocente( t );
-        teacherDao.addDocente( t1 );
-        Event event = new Event( "maker", new Date( 2019,05,24  ), "tech1", "good1", 100 );
-        Event event1 = new Event( "bigdata", new Date( 2019,05,23 ), "tech2", "good2", 101 );
-        eventDao.addEvent( event );
-        eventDao.addEvent( event1 );
-        return SUCCESS_RESULT;
     }
 
 
-    @DELETE
-    @Path("/delete")
-    @Produces(MediaType.APPLICATION_XML)
-    public void deleteEvent() {
-
-    }
-
-    @OPTIONS
-    @Produces(MediaType.APPLICATION_XML)
-    public String getSupportedOperations() {
-        return "<operations>GET, PUT, POST, DELETE</operations>";
-    }
 }
